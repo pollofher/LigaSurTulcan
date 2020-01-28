@@ -1,0 +1,144 @@
+﻿@model IEnumerable<LigaSurTulcan.Models.Pase>
+
+@{
+    ViewBag.Title = "Index";
+    @Html.Partial("Alerta");
+
+
+}
+
+<br /><br /><br /><br />
+@if (ViewBag.sms != null)
+{
+    <div class="col-md-12">
+        <div class="alert alert-danger alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+            <h4><i class="icon fa fa-exclamation-triangle"></i> Alerta!</h4>
+            @ViewBag.sms
+        </div>
+    </div>
+}
+@if (ViewBag.smsok != null)
+{
+    <div class="col-md-12">
+        <div class="alert alert-success alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <h4><i class="icon fa fa-check"></i> Correcto!</h4>
+            @ViewBag.smsok
+        </div>
+    </div>
+}
+<br /><br />
+<h2 class="text-center" style="color:black; font-family:Jokerman">Pases</h2>
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="http://codeseven.github.com/toastr/toastr.js"></script>
+<link rel="stylesheet" type="text/css" href="http://codeseven.github.com/toastr/toastr.css">
+<link href="~/Content/fontawesome.min.css" rel="stylesheet" />
+<link href="~/Content/Letras.css" rel="stylesheet" />
+<!--Loading font awesome icons.-->
+<script src="https://use.fontawesome.com/d94f445648.js"></script>
+<br />
+<div class="col col-2">
+    <div class="row" style="text-align:left;padding:5px">
+
+        <a href="~/Pases/Create" class="btn btn-success fa fa-plus"> Nuevo</a>
+    </div>
+</div>
+<br />
+
+<table class="table table-striped table-hover table-condensed" id="PasesTable" style="margin-top:20px">
+    <thead>
+        <tr>
+            <th>
+                Fecha Pase
+            </th>
+            <th>
+                Valor de Pase
+            </th>
+            <th>
+                Club Que Sale
+            </th>
+            <th>
+                Club Que Ingresa
+            </th>
+            <th>
+                Jugador
+            </th>
+           
+            <th>
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fecha)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.valor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.equipo_sale)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Equipo.nom_equipo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Jugador.Fullname)
+                </td>
+                
+                <td class="text-center">
+                    <a class="btn btn-primary" href="/Pases/Edit/@item.Id_pase"><i class="fas fa-fw fa-edit"></i></a>
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#alert" data-id="/Pases/Delete/@item.Id_pase">
+                        <i class="fas fa-fw fa-trash-alt"></i>
+                    </button>
+                </td>
+
+            </tr>
+
+        }
+
+
+    </tbody>
+
+
+</table>
+
+
+<link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
+@section scripts{
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+
+
+    <script>
+        $(document).ready(function () {
+            $('#PasesTable').DataTable({
+                "bFilter": true,
+                "bLengthChange": true,
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+                }
+            });
+        });
+    </script>
+
+    <script>
+$(document).ready(function (e) {
+  $('#alert').on('show.bs.modal', function(e) {
+     var id = $(e.relatedTarget).data().id;
+     $(e.currentTarget).find('#url').attr('href', (id));
+
+  });
+});
+//SetTimeout(function(){
+// $("#ViewBag").fadeOut(1500);
+//},3000);
+    </script>
+
+
+
+}

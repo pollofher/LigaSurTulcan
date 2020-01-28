@@ -1,0 +1,152 @@
+﻿@model LigaSurTulcan.Models.Jugador
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = null;
+    @Html.Partial("_Menu2");
+
+
+}
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css?family=Oswald:400,700|Dancing+Script:400,700|Muli:300,400" rel="stylesheet">
+<link rel="stylesheet" href="fonts/icomoon/style.css">
+<link href="~/Content/all.css" rel="stylesheet" />
+
+@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/modernizr")
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+
+<br />
+<br />
+<br />
+<br />
+
+<h2 class="text-center">Eliminar Jugador</h2>
+
+<h3 class="text-center text-danger">Está seguro de eliminar el registro?</h3>
+<div>
+    
+    <hr />
+    <dl class="col-md-10">
+        <dt>
+            @Html.DisplayNameFor(model => model.ced_jugador)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ced_jugador)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nom_jugador)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nom_jugador)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.apell_jugador)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.apell_jugador)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fechaNac_jugador)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fechaNac_jugador)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.carnet_jugador)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.carnet_jugador)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.foto_jugador)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.foto_jugador)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_filiacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_filiacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.estado_civil)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estado_civil)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.instruccion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.instruccion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.profesion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.profesion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.provincia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.provincia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.parroquia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.parroquia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Equipo.nom_equipo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Equipo.nom_equipo)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color text-center">
+            <input type="submit" value="Eliminar" class="btn btn-primary" /> |
+            @Html.ActionLink("Regresar a la Lista", "Index")
+        </div>
+    }
+</div>
+
+@Html.Partial("Footer2")

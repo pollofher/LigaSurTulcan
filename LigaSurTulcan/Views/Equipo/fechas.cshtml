@@ -1,0 +1,32 @@
+﻿@model IEnumerable<LigaSurTulcan.Models.Equipo>
+
+@{
+    ViewBag.Title = "fechas";
+}
+
+<h2>fechas</h2>
+
+<br />
+
+@{
+    var num = Model.Count(d => d.serie == "A");
+    string[] personas = new string[num];
+
+    for (int i = 1; i < num; i++)
+    {
+        for (int j = i + 1; j < num; j++)
+        {
+            ViewBag.e = i + " VS " + j;
+            personas[i] = ViewBag.e;
+
+        }
+    }
+}
+@{ 
+    for (int i = 0; i < personas.Length; i++)
+    {
+        <h2>@personas[i]</h2>
+
+    }
+
+}

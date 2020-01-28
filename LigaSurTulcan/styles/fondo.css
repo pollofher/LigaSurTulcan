@@ -1,0 +1,18 @@
+body{
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 100%;
+    background: url(../Content/images/bg.jpg)no-repeat center;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    -ms-background-size: cover;
+    text-align: center;
+
+
+}
+
+table td{
+    text-align:center;
+    vertical-align:middle;
+}

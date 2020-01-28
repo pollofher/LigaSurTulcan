@@ -1,0 +1,55 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+    @Html.AntiForgeryToken()
+
+    <ul class="nav navbar-nav navbar-right">
+        <li><i class="fas fa-laugh-beam text-white"></i>
+            @Html.ActionLink("Bienvenid@ " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage",Style="color:white"})
+            <style>
+                a{
+                    color:white;
+                }
+                /*a:hover {
+                         color: red;
+                     }*/
+            </style>
+        </li>
+        <li><a class="text-white hover-bg-enlarge" href="javascript:document.getElementById('logoutForm').submit()"><i class="fas fa-power-off text-white"></i> Cerrar sesión</a>
+            
+        </li>
+    </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+
+        <li><i class="fas fa-user text-white"></i>
+             @Html.ActionLink("Iniciar sesión", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+             <style>
+                 a {
+                     color: white;
+                     text-decoration: double;
+                 }
+             
+                     /*a:hover {
+                         color: red;
+                     }*/
+             </style>
+             </li>        
+            <li><i class="fas fa-sign-in-alt text-white"></i> 
+            @Html.ActionLink("Registrarse", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })
+            <style>
+                a {
+                    color: white;
+                }
+            </style>
+            
+
+        </li>
+        
+    </ul>
+}

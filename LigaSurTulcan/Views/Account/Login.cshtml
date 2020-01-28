@@ -1,0 +1,109 @@
+﻿@using LigaSurTulcan.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Iniciar sesión";
+    Layout = null;
+}
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css?family=Oswald:400,700|Dancing+Script:400,700|Muli:300,400" rel="stylesheet">
+<link rel="stylesheet" href="fonts/icomoon/style.css">
+<link href="~/Content/all.css" rel="stylesheet" />
+<link href="~/styles/font-awesome.css" rel="stylesheet" />
+<link href="~/styles/font-awesome.min.css" rel="stylesheet" />
+<link href="~/styles/style.css" rel="stylesheet" />
+
+@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/modernizr")
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+
+<br />
+<br />
+<br />
+<br />
+
+<h2 class="text-center">@ViewBag.Title.</h2>
+
+    <div class="w3ls-login box box--big">
+
+        <div class="clear-loading box box--big">
+            <div class="clear-loading spinner">
+                <span></span>
+            </div>
+            <section id="loginForm">
+                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                    @Html.AntiForgeryToken()
+                   
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <div class="agile-field-txt text-black">
+                        <label><i class="fa fa-user" aria-hidden="true"></i> Usuario </label>
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control",@placeholder="Ingrese Usuario" })
+                            @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="agile-field-txt">
+                        <label><i class="fa fa-unlock-alt" aria-hidden="true"></i> Contraseña </label>
+                        <div class="col-md-10 text-black">
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control",@placeholder="Ingrese contraseña",@type="password" })
+                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger"})
+                        </div>
+                    </div>
+                    <div class="agile_label">
+                        <input id="check3" name="check3" type="checkbox" value="show password" onclick="myFunction()">
+                        <label class="check" for="check3">Show password</label>
+                    </div>
+                    <!-- script for show password -->
+                    <script>
+				function myFunction() {
+					var x = document.getElementById("myInput");
+					if (x.type === "password") {
+						x.type = "text";
+					} else {
+						x.type = "password";
+					}
+				}
+                    </script>
+			<!-- //end script -->
+                    <div class="agile-field-txt">
+                        <div class="col-md-offset-2 col-md-10">
+                            <div class="checkbox">
+                                @Html.CheckBoxFor(m => m.RememberMe)
+                                @Html.LabelFor(m => m.RememberMe)
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="form-group">
+                            <input type="submit" value="Iniciar sesión" class="btn btn-primary" />
+                            <a href="@Url.Action("Register","Account")" class="btn btn-primary">Registrarse</a>
+                        </div>
+                    </div>
+                    
+                    @* Habilite esta opción después de habilitar la confirmación de la cuenta para la función de restablecimiento de contraseña
+                        <p>
+                            @Html.ActionLink("¿Ha olvidado su contraseña?", "ForgotPassword")
+                        </p>*@
+                }
+            </section>
+        </div>
+    </div>
+
+    @*<div class="col-md-4">
+            <section id="socialLoginForm">
+                @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+            </section>
+        </div>*@
+
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+@Html.Partial("Footer2")

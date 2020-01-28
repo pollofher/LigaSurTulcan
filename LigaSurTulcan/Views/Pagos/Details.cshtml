@@ -1,0 +1,50 @@
+﻿@model LigaSurTulcan.Models.pagos
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>pagos</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.total)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.total)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Partido_Equipo.sancion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Partido_Equipo.sancion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Partido_Jugador.Tarjeta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Partido_Jugador.Tarjeta)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_pagos }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

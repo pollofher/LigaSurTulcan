@@ -1,0 +1,92 @@
+﻿@model LigaSurTulcan.Models.Equipo
+
+@{
+    ViewBag.Title = "Nuevo Equipo";
+   
+}
+<br /><br /><br /><br />
+<h2 class="text-center" style="font-family:Jokerman">Editar Club</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal text-center">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id_Equipo)
+
+
+        <div class="form-group">
+            <label class="col-md-12">Club</label>
+            <div class="col-lg-3" style="float:none;margin:auto;">
+                @Html.EditorFor(model => model.nom_equipo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.nom_equipo, "", new { @class = "text-danger" })
+            </div>
+
+            <label class="col-md-12">Colores</label>
+            <div class="col-lg-3" style="float:none;margin:auto;">
+                @Html.EditorFor(model => model.color_equipo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.color_equipo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-12">Fundación</label>
+            <div class="col-lg-3" style="float:none;margin:auto;">
+                @Html.EditorFor(model => model.fundacion, new { htmlAttributes = new { @class = "form-control", Type = "Date" } })
+                @Html.ValidationMessageFor(model => model.fundacion, "", new { @class = "text-danger" })
+            </div>
+            <label class="col-md-12">Estado</label>
+            <div class="col-lg-3" style="float:none;margin:auto;">
+                @Html.DropDownListFor(model => model.Estado_equipo, new SelectList(new[] { "Activo", "Inactivo" }), new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Estado_equipo, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-12">Liga</label>
+            <div class="col-lg-3" style="float:none;margin:auto;">
+                @Html.DropDownListFor(model => model.liga, new SelectList(new[] { "LIGA SUR", "LIGA CENTRAL", "LIGA NORTE" }), new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.liga, "", new { @class = "text-danger" })
+            </div>
+
+            <label class="col-md-12">Serie</label>
+            <div class="col-lg-3" style="float:none;margin:auto;">
+                @Html.DropDownListFor(model => model.serie, new SelectList(new[] { "A", "B" }), new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.serie, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+
+
+            <label class="col-md-12">Dirigente</label>
+            <div class="col-lg-3" style="float:none;margin:auto;">
+                @Html.DropDownList("id_dirigente", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.id_dirigente, "", new { @class = "text-danger" })
+            </div>
+            <label class="col-md-12">Escudo</label>
+            <div class="col-lg-3" style="float:none;margin:auto;">
+                <img src="@Url.Action("Edit","Equipo",new { id=Model.Id_Equipo})" style="margin:10px" height="50" width="50" id="imagePreview" />
+                <input type="file" name="foto_equipo" required accept="image/jpg, image/png" onchange="ShowImagePreview(this,document.getElementById('imagePreview'))" /><br />
+                <a>(Tamaño imagen: Ancho:150 Altura:140 || Formato PNG)</a>
+
+            </div>
+        </div>
+
+        <div class="form-group text-center">
+            <div class="col-lg-3" style="float:none;margin:auto;">
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+                @Html.ActionLink("Regresar a Lista", "Index",null,new { style="color:blue"})
+            </div>
+        </div>
+    </div>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

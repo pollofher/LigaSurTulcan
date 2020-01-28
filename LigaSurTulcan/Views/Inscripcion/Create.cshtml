@@ -1,0 +1,67 @@
+﻿@model LigaSurTulcan.Models.Campeonato_Equipo
+
+@{
+    ViewBag.Title = "Create";
+}
+<br /><br /><br /><br />
+@if (ViewBag.smserror != null)
+{
+    <div class="col-md-12">
+        <div class="alert alert-danger alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+            <h4><i class="icon fa fa-times-circle"></i> Faltan pagos!</h4>
+            @ViewBag.smserror
+        </div>
+    </div>
+}
+
+<h2 class="text-center" style="font-family:Jokerman">Nueva Inscripción</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal text-center">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <label class="col-md-12">Campeonato</label>
+            <div class="col-lg-3" style="float:none;margin:auto;">
+                @Html.DropDownList("id_campeonato", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.id_campeonato, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-12">Club</label>
+            <div class="col-lg-3" style="float:none;margin:auto;">
+                @Html.DropDownList("id_Equipo", null, htmlAttributes: new { @class = "form-control", style = "text-align:center" })
+                @Html.ValidationMessageFor(model => model.id_Equipo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-12">Inscripción</label>
+            <div class="col-lg-3" style="float:none;margin:auto;">
+                @Html.EditorFor(model => model.inscripcion, new { htmlAttributes = new { @class = "form-control", placeholder = "Ingrese inscripción", style = "text-align:center" } })
+                @Html.ValidationMessageFor(model => model.inscripcion, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-12">Garantía</label>
+            <div class="col-lg-3" style="float:none;margin:auto;">
+                @Html.EditorFor(model => model.garantia, new { htmlAttributes = new { @class = "form-control", placeholder = "Ingrese garantía", style = "text-align:center" } })
+                @Html.ValidationMessageFor(model => model.garantia, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <div class="col-lg-3" style="float:none;margin:auto;">
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+                @Html.ActionLink("Regresar a Lista", "Index",null,new { style="color:blue"})
+            </div>
+        </div>
+    </div>
+}

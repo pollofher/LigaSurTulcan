@@ -1,0 +1,101 @@
+﻿@model LigaSurTulcan.Models.Equipo
+
+@{
+    ViewBag.Title = "Nuevo Equipo";
+   
+}
+<br />
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="http://codeseven.github.com/toastr/toastr.js"></script>
+<link rel="stylesheet" type="text/css" href="http://codeseven.github.com/toastr/toastr.css">
+<link href="~/Content/css/font-awesome.min.css" rel="stylesheet" />
+<!--Loading font awesome icons.-->
+<script src="https://use.fontawesome.com/d94f445648.js"></script>
+<br /><br /><br />
+<h2 class="text-center" style="font-family:Jokerman">Nuevo Club</h2>
+
+
+@using (Html.BeginForm("Create", "Equipo", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal text-center">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+        <div class="form-group" style="align-content:center">
+            <label class="col-md-12">Club</label>
+            <div class="col-lg-3" style="float:none;margin:auto;">
+                @Html.EditorFor(model => model.nom_equipo, new { htmlAttributes = new { @class = "form-control", placeholder = "Nombre del Club" } })
+                @Html.ValidationMessageFor(model => model.nom_equipo, "", new { @class = "text-danger" })
+            </div>
+
+            <label class="col-md-12">Colores</label>
+            <div class="col-lg-3" style="float:none;margin:auto;">
+                @Html.EditorFor(model => model.color_equipo, new { htmlAttributes = new { @class = "form-control", PLACEHOLDER = "Colores del Club" } })
+                @Html.ValidationMessageFor(model => model.color_equipo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-12">Fundación</label>
+            <div class="col-lg-3" style="float:none;margin:auto;">
+                @Html.EditorFor(model => model.fundacion, new { htmlAttributes = new { @class = "form-control", Type = "Date" } })
+
+            </div>
+
+            <label class="col-md-12">Dirigente</label>
+            <div class="col-lg-3" style="float:none;margin:auto;">
+                @Html.DropDownList("id_dirigente", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Dirigente.Fullname, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-12">Liga</label>
+            <div class="col-lg-3" style="float:none;margin:auto;">
+                @Html.DropDownListFor(model => model.liga, new SelectList(new[] { "LIGA SUR", "LIGA CENTRAL", "LIGA NORTE" }), new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.liga, "", new { @class = "text-danger" })
+            </div>
+
+            <label class="col-md-12">Serie</label>
+            <div class="col-lg-3" style="float:none;margin:auto;">
+                @Html.DropDownListFor(model => model.serie, new SelectList(new[] { "A", "B" }), new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.serie, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-12">Estado</label>
+            <div class="col-lg-3" style="float:none;margin:auto;">
+                @Html.DropDownListFor(model => model.Estado_equipo, new SelectList(new[] { "Activo", "Inactivo" }), new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Estado_equipo, "", new { @class = "text-danger" })
+            </div>
+
+            <label class="col-md-12">Escudo</label>
+            <div class="col-lg-3" style="float:none;margin:auto;">
+
+                <input type="file" name="foto_equipo" /><br />
+                <a>(Tamaño imagen: Ancho:150 Altura:140 || Formato PNG)</a>
+                <br />
+                <img id="imgSalida" width="50" height="50" src="" accept="image/jpg, image/png" onchange="ShowImagePreview(this,document.getElementById('imagePreview'))" />
+                @Html.ValidationMessageFor(model => model.foto_equipo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br /><br />
+        <div class="form-group text-center">
+            <div class="col-lg-3" style="float:none;margin:auto;">
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+                @Html.ActionLink("Regresar a Lista", "Index",null,new { style="color:blue"})
+            </div>
+        </div>
+    </div>
+}
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

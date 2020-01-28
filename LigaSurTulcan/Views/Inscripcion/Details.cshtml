@@ -1,0 +1,50 @@
+﻿@model LigaSurTulcan.Models.Campeonato_Equipo
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Campeonato_Equipo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.inscripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.inscripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.garantia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.garantia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Campeonato.Nom_Campeonato)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Campeonato.Nom_Campeonato)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Equipo.nom_equipo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Equipo.nom_equipo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_campeonato_equi }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

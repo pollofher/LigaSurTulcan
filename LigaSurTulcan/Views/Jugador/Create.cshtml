@@ -1,0 +1,128 @@
+﻿@model LigaSurTulcan.Models.Jugador
+
+@{
+    ViewBag.Title = "Create";
+}
+<br /><br /><br /><br />
+    <h2 class="text-center letra" style="color:black; font-family:Jokerman">Nuevo Jugador</h2>
+
+    @using (Html.BeginForm("Create", "Jugador", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal text-center">
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <label class="col-md-12">Cédula</label>
+                <div  class="col-lg-3" style="float:none;margin:auto;">
+                    @Html.EditorFor(model => model.ced_jugador, new { htmlAttributes = new { @class = "form-control", @placeholder = "Cédula (10 Digitos)" } })
+                    @Html.ValidationMessageFor(model => model.ced_jugador, "", new { @class = "text-danger" })
+                </div>
+
+                <label class="col-md-12">Nombres</label>
+                <div  class="col-lg-3" style="float:none;margin:auto;">
+                    @Html.EditorFor(model => model.nom_jugador, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nombres completos" } })
+                    @Html.ValidationMessageFor(model => model.nom_jugador, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-12">Apellidos</label>
+                <div  class="col-lg-3" style="float:none;margin:auto;">
+                    @Html.EditorFor(model => model.apell_jugador, new { htmlAttributes = new { @class = "form-control", @placeholder = "Apellidos completos" } })
+                    @Html.ValidationMessageFor(model => model.apell_jugador, "", new { @class = "text-danger" })
+                </div>
+
+                <label class="col-md-12">Fecha Nacimiento</label>
+                <div  class="col-lg-3" style="float:none;margin:auto;">
+                    @Html.EditorFor(model => model.fechaNac_jugador, new { htmlAttributes = new { @class = "form-control", Type = "Date" } })
+                    @Html.ValidationMessageFor(model => model.fechaNac_jugador, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-12">Carnet</label>
+                <div  class="col-lg-3" style="float:none;margin:auto;">
+                    @Html.EditorFor(model => model.carnet_jugador, new { htmlAttributes = new { @class = "form-control", @placeholder = "Numero Carnet" } })
+                    @Html.ValidationMessageFor(model => model.carnet_jugador, "", new { @class = "text-danger" })
+                </div>
+
+                <label class="col-md-12">Fotografía</label>
+                <div  class="col-lg-3" style="float:none;margin:auto;">
+                    <input type="file" name="foto_jugador" required /><br />
+                    <a>(Tamaño imagen: Ancho:150 Altura:140 || Formato PNG)</a>
+                    <br />
+                    <img id="imgSalida" width="50" height="50" src="" accept="image/jpg, image/png" onchange="ShowImagePreview(this,document.getElementById('imagePreview'))" />
+                    @Html.ValidationMessageFor(model => model.foto_jugador, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-12">Fecha Afiliación</label>
+                <div  class="col-lg-3" style="float:none;margin:auto;">
+                    @Html.EditorFor(model => model.fecha_filiacion, new { htmlAttributes = new { @class = "form-control", Type = "Date" } })
+                    @Html.ValidationMessageFor(model => model.fecha_filiacion, "", new { @class = "text-danger" })
+                </div>
+
+                <label class="col-md-12">Estado Civil</label>
+                <div  class="col-lg-3" style="float:none;margin:auto;">
+                    @Html.DropDownListFor(model => model.estado_civil, new SelectList(new[] { "Soltero", "Casado", "Unión Libre", "Divorciado" }), new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.estado_civil, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-12">Instrucción</label>
+                <div  class="col-lg-3" style="float:none;margin:auto;">
+                    @Html.DropDownListFor(model => model.instruccion, new SelectList(new[] { "Primaria", "Secundaria", "Superior", "Post Grado" }), new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.instruccion, "", new { @class = "text-danger" })
+                </div>
+
+                <label class="col-md-12">Profesión</label>
+                <div  class="col-lg-3" style="float:none;margin:auto;">
+                    @Html.DropDownListFor(model => model.profesion, new SelectList(new[] { "Abogado", "Albañil", "Arquitecto", "Bodeguero", "Comerciante", "Docente", "Doctor", "Estudiante", "Estibador", "Ingeniero", "Mecanico", "Taxista" }), new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.profesion, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-12">Provincia</label>
+                <div  class="col-lg-3" style="float:none;margin:auto;">
+                    @Html.DropDownListFor(model => model.provincia, new SelectList(new[] { "Azuay", "Bolivar", "Cañar", "Carchi", "Imbabura", "Pichincha" }), new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.provincia, "", new { @class = "text-danger" })
+                </div>
+
+                <label class="col-md-12">Parroquia</label>
+                <div  class="col-lg-3" style="float:none;margin:auto;">
+                    @Html.DropDownListFor(model => model.parroquia, new SelectList(new[] { "Tulcán", "Julio Andrade", "Tufiño", "El Maldonado", "Huaca", "Urbina", "Gonzáles Suaréz" }), new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.parroquia, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-12">Equipo</label>
+                <div  class="col-lg-3" style="float:none;margin:auto;">
+                    @Html.DropDownList("id_equipo", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.id_equipo, "", new { @class = "text-danger" })
+                </div>
+
+                <div></div>
+            </div>
+            <br />
+            <div  class="col-lg-3" style="float:none;margin:auto;">
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+                @Html.ActionLink("Regresar a Lista", "Index",null,new { style="color:blue"})
+            </div>
+            <br /><br />
+        </div>
+    }
+
+    <div>
+
+    </div>
+    <script src="~/Scripts/visualizar_imagen.js"></script>
+
+
+}
+

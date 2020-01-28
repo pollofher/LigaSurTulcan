@@ -1,0 +1,115 @@
+﻿@model LigaSurTulcan.Models.Equipo
+
+@{
+    ViewBag.Title = "Nuevo Equipo";
+    Layout = null;
+    @Html.Partial("_Menu2")
+}
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css?family=Oswald:400,700|Dancing+Script:400,700|Muli:300,400" rel="stylesheet">
+<link rel="stylesheet" href="fonts/icomoon/style.css">
+<link href="~/Content/all.css" rel="stylesheet" />
+
+@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/modernizr")
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+
+<br />
+<br />
+<br />
+<br />
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Eliminar</title>
+</head>
+<body>
+    <h3 class="text-center text-danger">Está seguro de eliminar el registro?</h3>
+    <div>
+        <h4 class="text-center text-danger">Equipo</h4>
+        <hr />
+        <dl class="col-md-10">
+            <dt>
+                @Html.DisplayNameFor(model => model.nom_equipo)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.nom_equipo)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.color_equipo)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.color_equipo)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.fundacion)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.fundacion)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.foto_equipo)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.foto_equipo)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.liga)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.liga)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.serie)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.serie)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Estado_equipo)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Estado_equipo)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Dirigente.ced_dirigente)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Dirigente.ced_dirigente)
+            </dd>
+    
+        </dl>
+    
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+    
+            <div class="form-actions no-color text-center">
+                <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+                @Html.ActionLink("Regresar a la Lista", "Index")
+            </div>
+        }
+    </div>
+</body>
+</html>
+@Html.Partial("Footer2")

@@ -1,0 +1,82 @@
+﻿@model LigaSurTulcan.Models.Dirigente
+
+@{
+    ViewBag.Title = "Edit";
+}
+<br /><br /><br /><br />
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="http://codeseven.github.com/toastr/toastr.js"></script>
+<link rel="stylesheet" type="text/css" href="http://codeseven.github.com/toastr/toastr.css">
+<link href="~/Content/css/font-awesome.min.css" rel="stylesheet" />
+<!--Loading font awesome icons.-->
+<script src="https://use.fontawesome.com/d94f445648.js"></script>
+<h2 class="text-center" style="font-family:Jokerman">Editar Dirigente</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id_dirigente)
+
+        <div class="form-group text-center">
+            <label class="col-md-12">Cédula</label>
+            <div class="col-lg-3" style="float:none;margin:auto;">
+                @Html.EditorFor(model => model.ced_dirigente, new { htmlAttributes = new { @class = "form-control", style = "text-align:center" } })
+                @Html.ValidationMessageFor(model => model.ced_dirigente, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group text-center">
+            <label class="col-md-12">Nombres</label>
+            <div class="col-lg-3" style="float:none;margin:auto;">
+                @Html.EditorFor(model => model.nom_dirigente, new { htmlAttributes = new { @class = "form-control", style = "text-align:center" } })
+                @Html.ValidationMessageFor(model => model.nom_dirigente, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group text-center">
+            <label class="col-md-12">Apellidos</label>
+            <div class="col-lg-3" style="float:none;margin:auto;">
+                @Html.EditorFor(model => model.apelli_dirigente, new { htmlAttributes = new { @class = "form-control", style = "text-align:center" } })
+                @Html.ValidationMessageFor(model => model.apelli_dirigente, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group text-center">
+            <label class="col-md-12">Dirección</label>
+            <div class="col-lg-3" style="float:none;margin:auto;">
+                @Html.EditorFor(model => model.dir_dirigente, new { htmlAttributes = new { @class = "form-control", style = "text-align:center" } })
+                @Html.ValidationMessageFor(model => model.dir_dirigente, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group text-center">
+            <label class="col-md-12">Telefóno</label>
+            <div class="col-lg-3" style="float:none;margin:auto;">
+                @Html.EditorFor(model => model.telf_dirigente, new { htmlAttributes = new { @class = "form-control", style = "text-align:center" } })
+                @Html.ValidationMessageFor(model => model.telf_dirigente, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-lg-3" style="float:none;margin:auto;">
+                <button type="submit" value="Guardar" class="btn btn-primary">
+
+                    <i class="glyphicon glyphicon-floppy-saved"></i>
+                    Guardar
+                </button>
+                @Html.ActionLink("Regresar a Lista", "Index",null,new { style="color:blue"})
+            </div>
+        </div>
+    </div>
+}
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

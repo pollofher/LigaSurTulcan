@@ -1,0 +1,87 @@
+﻿@model LigaSurTulcan.Models.Pase
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = null;
+    @Html.Partial("_Menu2");
+
+
+}
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css?family=Oswald:400,700|Dancing+Script:400,700|Muli:300,400" rel="stylesheet">
+<link rel="stylesheet" href="fonts/icomoon/style.css">
+<link href="~/Content/all.css" rel="stylesheet" />
+
+@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/modernizr")
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+
+<br />
+<br />
+<br />
+<br />
+
+<h2 class="text-center text-black">Eliminar registro</h2>
+
+<h3 class="text-center text-danger">Está seguro de eliminar el registro?</h3>
+<div>
+    
+    <hr />
+    <dl class="col-md-10">
+        <dt>
+            <label>Fecha de Pase</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha)
+        </dd>
+
+        <dt>
+            <label>Valor de Pase</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.valor)
+        </dd>
+
+        <dt>
+            <label>Club que ingresa</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.equipo_sale)
+        </dd>
+
+        <dt>
+            <label>Club que sale</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Equipo.nom_equipo)
+        </dd>
+
+        <dt>
+            <label>Jugador</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Jugador.ced_jugador)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color text-center">
+            <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+            @Html.ActionLink("Regresar a la Lista", "Index")
+        </div>
+    }
+</div>
+@Html.Partial("Footer2")

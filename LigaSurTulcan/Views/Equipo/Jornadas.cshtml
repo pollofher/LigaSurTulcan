@@ -1,0 +1,120 @@
+﻿@model IEnumerable<LigaSurTulcan.Models.Equipo>
+
+@{
+    ViewBag.Title = "fechas";
+}
+<br /><br /><br />
+<h2>fechas</h2>
+
+<br />
+
+@{
+    var num = Model.Count(d => d.serie == "A");
+    var jornadas = num - 1;
+
+    var partidos = num/2;
+
+    string[] eq1 = new string[num/2];
+    
+
+    <h4>@num</h4>
+
+    for (int i = 1; i < num; i++)
+    {
+        <h2>Fecha: @i</h2>
+
+        for (int j = num; j > partidos; j--)
+        {
+            //i = j-i;
+            //if (i == j)
+            //{
+            //    break;
+            //}
+
+            <h2>Equipo: @i vs @j</h2>
+
+            //k = k + 1 ;
+
+        }
+
+
+
+        //for (int j = num; j > 0; j--)
+        //{
+
+        //    ViewBag.e = i + " VS " + j;
+        //    personas[i][j] = ViewBag.e;
+
+        //}
+    }
+}
+@{
+    @*for (int i = 0; i < personas.Length; i++)
+    {
+        <h2>@personas[i]</h2>
+
+    }*@
+
+}
+
+
+<table border="1" cellpadding="0" cellspacing="0" align="center">
+    <tbody>
+        <tr>
+            <th>&nbsp;&nbsp;&nbsp;FECHAS&nbsp;&nbsp;&nbsp;</th>
+            <th colspan="4">&nbsp;&nbsp;&nbsp;JUEGAN&nbsp;&nbsp;&nbsp;</th>
+        </tr>
+        <tr>
+            <td align="center">1ra.</td>
+            <td align="center">&nbsp;&nbsp;&nbsp;1&nbsp;vs.&nbsp;2&nbsp;&nbsp;&nbsp;</td>
+            <td align="center">&nbsp;&nbsp;&nbsp;3&nbsp;vs.&nbsp;4&nbsp;&nbsp;&nbsp;</td>
+            <td align="center">&nbsp;&nbsp;&nbsp;5&nbsp;vs.&nbsp;6&nbsp;&nbsp;&nbsp;</td>
+            <td align="center">&nbsp;&nbsp;&nbsp;7&nbsp;vs.&nbsp;8&nbsp;&nbsp;&nbsp;</td>
+        </tr>
+        <tr>
+            <td align="center">2da.</td>
+            <td align="center">&nbsp;&nbsp;&nbsp;1&nbsp;vs.&nbsp;3&nbsp;&nbsp;&nbsp;</td>
+            <td align="center">&nbsp;&nbsp;&nbsp;2&nbsp;vs.&nbsp;7&nbsp;&nbsp;&nbsp;</td>
+            <td align="center">&nbsp;&nbsp;&nbsp;4&nbsp;vs.&nbsp;5&nbsp;&nbsp;&nbsp;</td>
+            <td align="center">&nbsp;&nbsp;&nbsp;6&nbsp;vs.&nbsp;8&nbsp;&nbsp;&nbsp;</td>
+        </tr>
+        <tr>
+            <td align="center">3ra.</td>
+            <td align="center">&nbsp;&nbsp;&nbsp;1&nbsp;vs.&nbsp;4&nbsp;&nbsp;&nbsp;</td>
+            <td align="center">&nbsp;&nbsp;&nbsp;2&nbsp;vs.&nbsp;6&nbsp;&nbsp;&nbsp;</td>
+            <td align="center">&nbsp;&nbsp;&nbsp;3&nbsp;vs.&nbsp;7&nbsp;&nbsp;&nbsp;</td>
+            <td align="center">&nbsp;&nbsp;&nbsp;5&nbsp;vs.&nbsp;8&nbsp;&nbsp;&nbsp;</td>
+        </tr>
+        <tr>
+            <td align="center">4ta.</td>
+            <td align="center">&nbsp;&nbsp;&nbsp;1&nbsp;vs.&nbsp;5&nbsp;&nbsp;&nbsp;</td>
+            <td align="center">&nbsp;&nbsp;&nbsp;2&nbsp;vs.&nbsp;3&nbsp;&nbsp;&nbsp;</td>
+            <td align="center">&nbsp;&nbsp;&nbsp;4&nbsp;vs.&nbsp;8&nbsp;&nbsp;&nbsp;</td>
+            <td align="center">&nbsp;&nbsp;&nbsp;6&nbsp;vs.&nbsp;7&nbsp;&nbsp;&nbsp;</td>
+        </tr>
+        <tr>
+            <td align="center">5ta.</td>
+            <td align="center">&nbsp;&nbsp;&nbsp;1&nbsp;vs.&nbsp;6&nbsp;&nbsp;&nbsp;</td>
+            <td align="center">&nbsp;&nbsp;&nbsp;2&nbsp;vs.&nbsp;4&nbsp;&nbsp;&nbsp;</td>
+            <td align="center">&nbsp;&nbsp;&nbsp;3&nbsp;vs.&nbsp;8&nbsp;&nbsp;&nbsp;</td>
+            <td align="center">&nbsp;&nbsp;&nbsp;5&nbsp;vs.&nbsp;7&nbsp;&nbsp;&nbsp;</td>
+        </tr>
+        <tr>
+            <td align="center">6ta.</td>
+            <td align="center">&nbsp;&nbsp;&nbsp;1&nbsp;vs.&nbsp;7&nbsp;&nbsp;&nbsp;</td>
+            <td align="center">&nbsp;&nbsp;&nbsp;2&nbsp;vs.&nbsp;8&nbsp;&nbsp;&nbsp;</td>
+            <td align="center">&nbsp;&nbsp;&nbsp;3&nbsp;vs.&nbsp;5&nbsp;&nbsp;&nbsp;</td>
+            <td align="center">&nbsp;&nbsp;&nbsp;4&nbsp;vs.&nbsp;6&nbsp;&nbsp;&nbsp;</td>
+        </tr>
+        <tr>
+            <td align="center">7ma</td>
+            <td align="center">&nbsp;&nbsp;&nbsp;1&nbsp;vs.&nbsp;8&nbsp;&nbsp;&nbsp;</td>
+            <td align="center">&nbsp;&nbsp;&nbsp;2&nbsp;vs.&nbsp;5&nbsp;&nbsp;&nbsp;</td>
+            <td align="center">&nbsp;&nbsp;&nbsp;3&nbsp;vs.&nbsp;6&nbsp;&nbsp;&nbsp;</td>
+            <td align="center">&nbsp;&nbsp;&nbsp;4&nbsp;vs.&nbsp;7&nbsp;&nbsp;&nbsp;</td>
+        </tr>
+  
+
+    </tbody>
+</table>
+

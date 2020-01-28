@@ -1,0 +1,86 @@
+﻿@model LigaSurTulcan.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Registrarse";
+    Layout = null;
+}
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css?family=Oswald:400,700|Dancing+Script:400,700|Muli:300,400" rel="stylesheet">
+<link rel="stylesheet" href="fonts/icomoon/style.css">
+<link href="~/Content/all.css" rel="stylesheet" />
+<link href="~/styles/font-awesome.css" rel="stylesheet" />
+<link href="~/styles/font-awesome.min.css" rel="stylesheet" />
+<link href="~/styles/style.css" rel="stylesheet" />
+
+@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/modernizr")
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+
+<br />
+<br />
+<br />
+<br />
+
+<h2 class="text-center">@ViewBag.Title.</h2>
+
+<div class="w3ls-login box box--big">
+
+    <div class="clear-loading box box--big">
+        <div class="clear-loading spinner">
+            <span></span>
+        </div>
+        <section id="loginForm">
+            @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <hr />
+                    @Html.ValidationSummary("", new { @class = "text-danger" })
+
+                    <div class="agile-field-txt text-black">
+                        <label><i class="fa fa-user" aria-hidden="true"></i> Usuario </label>
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @placeholder = "Ingrese Usuario" })
+                            @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="agile-field-txt">
+                        <label><i class="fa fa-envelope" aria-hidden="true"></i> E-mail </label>
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control",@placeholder="Ingrese correo electrónico" })
+                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="agile-field-txt">
+                        <label><i class="fa fa-unlock-alt" aria-hidden="true"></i> Contraseña </label>
+                        <div class="col-md-10 text-black">
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Ingrese contraseña", @type = "password" })
+                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="agile-field-txt">
+                        <label><i class="fa fa-key" aria-hidden="true"></i> Confirmar Contraseña </label>
+                        <div class="col-md-10">
+                            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control",@placeholder="Confirmar contraseña" })
+                            @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="form-group">
+                                <input type="submit" class="btn btn-default" value="Registrarse" />
+                        </div>
+                    </div>
+            }
+        </section>
+
+        
+
+    </div>
+</div>
+
+    @Html.Partial("Footer2")

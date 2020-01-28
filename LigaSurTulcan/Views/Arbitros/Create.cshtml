@@ -1,0 +1,98 @@
+﻿@model LigaSurTulcan.Models.Arbitro
+
+@{
+    ViewBag.Title = "Create";
+   
+}
+
+<br /><br />
+@if (ViewBag.smserror != null)
+{
+    <div class="col-md-12">
+        <div class="alert alert-danger alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+            <h4><i class="icon fa fa-exclamation-triangle"></i> Faltan pagos!</h4>
+            @ViewBag.smserror
+        </div>
+    </div>
+}
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="http://codeseven.github.com/toastr/toastr.js"></script>
+<link rel="stylesheet" type="text/css" href="http://codeseven.github.com/toastr/toastr.css">
+<link href="~/Content/css/font-awesome.min.css" rel="stylesheet" />
+<!--Loading font awesome icons.-->
+<script src="https://use.fontawesome.com/d94f445648.js"></script>
+<br /><br />
+<h1 class="text-center" style="color:black; font-family:Jokerman">Nuevo Arbitro</h1>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <br />
+    <div class="form-horizontal text-center">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <label class="col-md-12">Cédula</label>
+            <div class="col-lg-3" style="float:none;margin:auto;">
+                @Html.EditorFor(model => model.ced_arbitro, new { htmlAttributes = new { @class = "form-control", @placeholder = "Cédula (10 Digitos)" } })
+                @Html.ValidationMessageFor(model => model.ced_arbitro, "", new { @class = "text-danger" })
+            </div>
+       
+            <label class="col-md-12">Nombres</label>
+            <div class="col-lg-3" style="float:none;margin:auto;">
+                @Html.EditorFor(model => model.nom_arbitro, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nombres Completos" } })
+                @Html.ValidationMessageFor(model => model.nom_arbitro, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-12">Apellidos</label>
+            <div class="col-lg-3" style="float:none;margin:auto;">
+                @Html.EditorFor(model => model.apell_arbitro, new { htmlAttributes = new { @class = "form-control", @placeholder = "Apellidos Completos" } })
+                @Html.ValidationMessageFor(model => model.apell_arbitro, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group text-center">
+            <label>Dirección</label>
+            <div class="col-lg-3" style="float:none;margin:auto;">
+                @Html.EditorFor(model => model.dir_arbitro, new { htmlAttributes = new { @class = "form-control", @placeholder = "Dirección del domicilio" } })
+                @Html.ValidationMessageFor(model => model.dir_arbitro, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group text-center">
+            <label>País</label>
+            <div class="col-lg-3" style="float:none;margin:auto;">
+                @Html.DropDownListFor(model => model.Pais, new SelectList(new[] { "Colombia", "Ecuador" }), new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Pais, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group text-center">
+            <label>Telefóno</label>
+            <div class="col-lg-3" style="float:none;margin:auto;">
+                @Html.EditorFor(model => model.telf_arbitro, new { htmlAttributes = new { @class = "form-control", @placeholder = "Telefóno (Máx 10 caracteres)" } })
+                @Html.ValidationMessageFor(model => model.telf_arbitro, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group text-center">
+            <label>Correo</label>
+            <div class="col-lg-3" style="float:none;margin:auto;">
+                @Html.EditorFor(model => model.correo_arbitro, new { htmlAttributes = new { @class = "form-control", @placeholder = "ejemplo@mail.com" } })
+                @Html.ValidationMessageFor(model => model.correo_arbitro, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <div class="col-lg-3" style="float:none;margin:auto;">
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+                @Html.ActionLink("Regresar a la Lista", "Index", null, new { @class = "glyphicon glyphicon-edit", style = "color:blue" })
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

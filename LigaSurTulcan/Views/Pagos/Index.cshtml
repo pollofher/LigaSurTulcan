@@ -1,0 +1,51 @@
+﻿@model IEnumerable<LigaSurTulcan.Models.pagos>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.total)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Partido_Equipo.sancion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Partido_Jugador.Tarjeta)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.total)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Partido_Equipo.sancion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Partido_Jugador.Tarjeta)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id_pagos }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id_pagos }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id_pagos })
+        </td>
+    </tr>
+}
+
+</table>

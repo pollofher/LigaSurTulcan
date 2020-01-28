@@ -1,0 +1,77 @@
+﻿@model LigaSurTulcan.Models.ViewModels.CampeonatoViewModel
+
+@{
+    ViewBag.Title = "Nuevo Campeonato";
+    Layout = null;
+    @Html.Partial("_Menu2")
+
+}
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css?family=Oswald:400,700|Dancing+Script:400,700|Muli:300,400" rel="stylesheet">
+<link rel="stylesheet" href="fonts/icomoon/style.css">
+<link href="~/Content/all.css" rel="stylesheet" />
+
+@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/modernizr")
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+
+<br/>
+<br/>
+<br/>
+<br/>
+
+<div class="text-black"><center><h2>@ViewBag.Title</h2></center></div>
+
+@using (Html.BeginForm("Nuevo", "Campeonato", FormMethod.Post))
+{
+
+    <div>
+        <div class="col-md-12 text-black">
+            <div class="col-md-4">
+                @Html.LabelFor(d => d.Nom_Campeonato)<br />
+                @Html.TextBoxFor(d => d.Nom_Campeonato, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.Nom_Campeonato, null, new { @class = "red" })<br />
+            </div>
+
+            <div class="col-md-4">
+                @Html.LabelFor(d => d.fecha_ini)<br />
+                @Html.EditorFor(d => d.fecha_ini, "", new { @class = "form-control" })<br />
+                @Html.ValidationMessageFor(d => d.fecha_ini, null, new { @class = "red" })<br />
+            </div>
+
+            <div class="col-md-4">
+                @Html.LabelFor(d => d.fecha_fin)<br />
+                @Html.EditorFor(d => d.fecha_fin, "", new { @class = "form-control" })<br />
+                @Html.ValidationMessageFor(d => d.fecha_fin, null, new { @class = "red" })<br />
+            </div>
+
+                      
+            <div class="col-md-4">
+               @Html.LabelFor(d => d.Estado_campeonato)<br />
+               @Html.DropDownListFor(d => d.Estado_campeonato, new SelectList(new[] { "Activo","Inactivo"}),new { @class="form-control"})
+            </div>
+
+            <br/>
+            <div class="col-md-12 col-6" style="text-align:center">
+                <input value="Guardar" type="submit" class="btn btn-primary" />
+          
+                @Html.ActionLink("Regresar a Lista", "Index")
+               
+            </div>
+
+        </div>
+
+    </div>
+
+   
+    <!--Pie de pagina-->
+   @Html.Partial("Footer2")
+
+}
+

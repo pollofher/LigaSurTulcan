@@ -1,0 +1,56 @@
+﻿@model LigaSurTulcan.Models.Campeonato_Equipo
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Campeonato_Equipo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.inscripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.inscripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.garantia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.garantia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Campeonato.Nom_Campeonato)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Campeonato.Nom_Campeonato)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Equipo.nom_equipo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Equipo.nom_equipo)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

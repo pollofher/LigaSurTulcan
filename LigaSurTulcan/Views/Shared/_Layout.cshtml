@@ -1,0 +1,160 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Liga sur Tulcán</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Oswald:400,700|Dancing+Script:400,700|Muli:300,400" rel="stylesheet">
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <link href="~/Content/all.css" rel="stylesheet" />
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/plugins/DataTables-1.10.15/media/js/jquery.js"></script>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/bundles/sweetalert/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Scripts/plugins/DataTables-1.10.15/media/css/jquery.dataTables.min.css" rel="stylesheet" />
+</head>
+<body>
+      <!-- Inicio Menu -->
+    <!--Head Inicio-->
+    <div class="header-top bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-6 col-lg-3">
+                    <a class="navbar-brand custom_navbar-brand" href="@Url.Action("Index", "Home")" title="Index"><img src="@Url.Content("../../Content/images/ligasur2.png")"></a>
+                </div>
+                <div class="col-lg-3 d-none d-lg-block text-black">
+                    <div>
+
+                        <span class="h5 d-block fas fa-location-arrow"> Carchi-Tulcán</span>
+                        <span class="caption-text"> Av.Universitaria y Cayambe</span>
+
+                    </div>
+                </div>
+                <div class="col-lg-3 d-none d-lg-block text-black">
+                    <div>
+
+                        <span class="h5 d-block fas fa-phone"> 062280-987</span>
+                        <span class="caption-text">  Telefóno</span>
+                    </div>
+                </div>
+                <div class="col-lg-3 d-none d-lg-block text-black">
+                    <div>
+
+                        <span class="h5 d-block fas fa-envelope"> ligasur@gmail.com</span>
+                        <span class="caption-text">  Nuestro correo</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <!--Fin Head-->
+    <!-- Inicio Menu -->
+
+    
+   @if (User.IsInRole("Admin"))
+   {
+       @Html.Partial("_Menu2")
+   }
+   else if (User.IsInRole("Secretaria"))
+   {
+       @Html.Partial("Menusecretaria")
+   }
+   else
+   {
+    <div class="site-navbar py-2 js-sticky-header site-navbar-target d-none pl-0 d-lg-block" role="banner">
+        <div class="container">
+            <div class="d-flex align-items-center">
+
+                <div class="mx-auto">
+                    <nav class="site-navigation position-relative" role="navigation">
+                        <ul class="site-menu main-menu ">
+                            <li>
+                                <a href="@Url.Action("Index","Campeonatoes")">Campeonatos</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Registros
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="@Url.Action("Index", "Dirigente")">Dirigentes</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index", "Equipo")">Club</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index", "Jugador")">Jugador</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index","Inscripcion")">Inscripciones</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index", "Arbitros")">Arbitro</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index", "Vocal")">Vocal</a>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Index", "Pases")">Pases</a>
+                            </li> 
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Multas
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="@Url.Action("Index", "Multas")">Equipos</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index", "Sanciones")">Jugadores</a>
+                                    
+                                </div>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Contar","Equipo")">Calendario</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Index","Pagos")">Pagos</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Index","Goles")">Goles</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Reportes
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="@Url.Action("Index", "#")">Equipos</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index", "#")">Jugadores</a>
+
+                                </div>
+                            </li>
+                            <li>
+                                @Html.Partial("_LoginPartial")
+                            </li>
+
+                        </ul>
+                    </nav>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+   }
+
+
+
+
+
+    <!-- Final Menu -->
+    <!-- Final Menu -->
+   
+    @RenderBody()
+    <br/>
+    <br/>
+   
+       
+    <script src="~/Scripts/plugins/DataTables-1.10.15/media/js/jquery.dataTables.min.js"></script>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/sweetalert/js")
+    @RenderSection("scripts", required: false)
+    <script src="~/Scripts/Scripts.js"></script>
+    <script src="~/Scripts/notify.min.js"></script>
+</body>
+
+</html>
+

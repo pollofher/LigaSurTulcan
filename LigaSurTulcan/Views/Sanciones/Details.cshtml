@@ -1,0 +1,66 @@
+﻿@model LigaSurTulcan.Models.Partido_Jugador
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Partido_Jugador</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Tarjeta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tarjeta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.valor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.valor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cantidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cantidad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Total)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Total)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Jugador.ced_jugador)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Jugador.ced_jugador)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Partido.Jornada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Partido.Jornada)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_part_jugador }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

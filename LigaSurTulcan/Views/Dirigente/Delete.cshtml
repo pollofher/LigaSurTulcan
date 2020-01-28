@@ -1,0 +1,86 @@
+﻿@model LigaSurTulcan.Models.Dirigente
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = null;
+    @Html.Partial("_Menu2");
+
+
+}
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css?family=Oswald:400,700|Dancing+Script:400,700|Muli:300,400" rel="stylesheet">
+<link rel="stylesheet" href="fonts/icomoon/style.css">
+<link href="~/Content/all.css" rel="stylesheet" />
+
+@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/modernizr")
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+
+<br />
+<br />
+<br />
+<br />
+
+<h2 class="text-center text-danger">Eliminar registro</h2>
+
+<h3 class="text-center text-danger">Seguro que quiere eliminar el registro?</h3>
+<div>
+    
+    <hr />
+    <dl class="col-md-12">
+        <dt>
+            @Html.DisplayNameFor(model => model.ced_dirigente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ced_dirigente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nom_dirigente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nom_dirigente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.apelli_dirigente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.apelli_dirigente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dir_dirigente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dir_dirigente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.telf_dirigente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.telf_dirigente)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color text-center">
+            <input type="submit" value="Borrar" class="btn btn-primary" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
